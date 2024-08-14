@@ -7,7 +7,9 @@ import { useEffect } from "react";
 
 const apiUrl = process.env.REACT_APP_SERVER_URL;
 const SocketContext = createContext();
-const socket = io(apiUrl);
+const socket = io(apiUrl , {transports: ['polling']});
+// const socket = io('https://video-call-webrtc-sage.vercel.app', {transports: ['polling']});
+
 
 const ContextProvider = ({ children }) => {
     const [callAccepted, setCallAccepted] = useState(false);
