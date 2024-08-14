@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 
+const apiUrl = process.env.REACT_APP_SERVER_URL;
 const SocketContext = createContext();
-const socket = io('http://localhost:8080');
+const socket = io(apiUrl);
 
 const ContextProvider = ({ children }) => {
     const [callAccepted, setCallAccepted] = useState(false);
@@ -52,7 +53,7 @@ const ContextProvider = ({ children }) => {
         const peer = new Peer({
             initiator: true,
             trickle: false,
-            stream: stream 
+            stream: stream
         });
         console.log(stream);
 
